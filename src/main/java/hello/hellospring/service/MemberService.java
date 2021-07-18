@@ -9,10 +9,13 @@ import hello.hellospring.repository.MemoryMemberRepository;
 
 public class MemberService {
 
-	private final MemberRepository memberRepository = new MemoryMemberRepository();
-	
-	
-	
+	private final MemberRepository memberRepository;
+
+	//memberRepository를 외부에서 넣어 준다 -> DI
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
 	//회원 가입
 	public Long join(Member member) {
 		//같은 이름은 가입 안 된다

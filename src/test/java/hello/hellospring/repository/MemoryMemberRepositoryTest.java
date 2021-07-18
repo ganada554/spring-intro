@@ -15,24 +15,23 @@ class MemoryMemberRepositoryTest {
 
 	MemoryMemberRepository repository = new MemoryMemberRepository();
 	
-	@AfterEach //메서드가 끝날 때 마다 실행된다 - 저장소 clear
+	@AfterEach //????? ???? ?? ???? ?????? - ????? clear
 	public void afterEach() {
 		repository.clearStore();
 	}
-	
-	
+
 	@Test
-	public void save() { //저장이 잘 되는지 테스트
+	public void save() { //?????? ?? ????? ????
 		Member member = new Member();
 		member.setName("spring");
 		repository.save(member);
-		Member result = repository.findById(member.getId()).get(); //잘 저장이 됐나 id로 확인 - optional은 get으로 꺼낼 수 있음
+		Member result = repository.findById(member.getId()).get(); //?? ?????? ??? id?? ??? - optional?? get???? ???? ?? ????
 		System.out.println("repository.findById(member.getId()) : " + repository.findById(member.getId()));
-		System.out.println("repository.findById(member.getId()).get() : " + repository.findById(member.getId()).get()); //get() : 옵셔널을 까서 꺼내기
+		System.out.println("repository.findById(member.getId()).get() : " + repository.findById(member.getId()).get()); //get() : ?????? ?? ??????
 		//System.out.println("result = "+(result==member));
 		
-		//Assertions.assertEquals(member, result); //기대값, 넣는 값
-		Assertions.assertThat(member).isEqualTo(result); //member가 result랑 똑같은지?
+		//Assertions.assertEquals(member, result); //??밪, ??? ??
+		Assertions.assertThat(member).isEqualTo(result); //member?? result?? ????????
 	}
 	
 	
