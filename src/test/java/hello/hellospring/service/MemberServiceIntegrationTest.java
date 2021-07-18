@@ -4,28 +4,24 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
-//스프링 없이 하는 테스트의 필요성 : 속도가 빠름
-class MemberServiceTest {
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@SpringBootTest
+@Transactional
+class MemberServiceIntegrationTest {
 //test는 예외 흐름을 검증하는게 중요!
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
 
-    @BeforeEach
-    public void beforeEach(){
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
+
 
 
     @Test //테스트 코드는 한글로 적어도 상관 없다
@@ -63,11 +59,5 @@ class MemberServiceTest {
         //then
     }
 
-    @Test
-    void findMembers() {
-    }
 
-    @Test
-    void findOne() {
-    }
 }
