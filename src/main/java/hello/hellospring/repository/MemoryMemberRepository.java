@@ -9,7 +9,9 @@ import java.util.Optional;
 import javax.sound.midi.Sequence;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
 	private static Map<Long, Member> store = new HashMap<>(); //¿˙¿Âº“
