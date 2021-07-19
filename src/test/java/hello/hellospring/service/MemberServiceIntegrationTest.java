@@ -9,13 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @Transactional
-class MemberServiceIntegrationTest {
+class MemberServiceIntegrationTest { //스프링 통합테스트
 //test는 예외 흐름을 검증하는게 중요!
 
     @Autowired MemberService memberService;
@@ -25,6 +26,7 @@ class MemberServiceIntegrationTest {
 
 
     @Test //테스트 코드는 한글로 적어도 상관 없다
+    //@Commit //롤백되지 않고 DB에 커밋함
     void 회원가입() {
         //given
         Member member = new Member();
