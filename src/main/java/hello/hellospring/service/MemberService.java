@@ -22,11 +22,10 @@ public class MemberService {
 
 	//회원 가입
 	public Long join(Member member) {
-		//같은 이름은 가입 안 된다
-		validateDuplicateMember(member); //코드가 길어지는 경우 메소드로 빼기
-		
-		memberRepository.save(member);
-		return member.getId();
+			//같은 이름은 가입 안 된다
+			validateDuplicateMember(member); //코드가 길어지는 경우 메소드로 빼기
+			memberRepository.save(member);
+			return member.getId();
 	}
 	
 	public void validateDuplicateMember(Member member) {
